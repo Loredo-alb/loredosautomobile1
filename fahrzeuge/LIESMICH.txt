@@ -1,0 +1,20 @@
+FOTOS DER FAHRZEUGE
+===================
+
+Für jedes Fahrzeug einen Ordner mit seiner Nummer anlegen,
+die Fotos darin der Reihe nach benennen:
+
+  fahrzeuge/
+    1007/
+      1.jpg   <- Titelbild
+      2.jpg
+      3.jpg
+      ...
+
+In fahrzeuge.js beim Fahrzeug dann "Fotos: 3" eintragen (Anzahl).
+
+- Nur JPG, kleingeschrieben (1.jpg, nicht 1.JPG)
+- Querformat 4:3, ca. 1600 Pixel breit, möglichst unter 400 KB
+- Fehlt ein Foto, wird es einfach übersprungen
+
+Ausführliche Anleitung: ANLEITUNG.md

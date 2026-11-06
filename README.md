@@ -12,8 +12,8 @@ die vorbereitete Anfrage per WhatsApp oder E-Mail.
 
 ## Online
 
-**https://loredosautomobile.de** (GitHub Pages, Domain bei Hostinger).
-Änderungen im Zweig `main` sind nach 1 bis 2 Minuten online.
+**https://loredosautomobile.de** bei Hostinger, automatisch aus diesem Repository
+(Zweig `main`). Änderungen sind kurz nach dem Speichern online.
 Einrichtung und Umzug auf eine eigene Domain: siehe [ANLEITUNG.md](ANLEITUNG.md).
 
 ## Online-Link auf claude.ai

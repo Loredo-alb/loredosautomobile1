@@ -125,46 +125,22 @@ Ab 4 Fahrzeugen erscheinen Suche und Filter wieder von selbst.
 
 ---
 
-## 5. Webseite online stellen
+## 5. Online: loredosautomobile.de
 
-### Aktuell: GitHub Pages (kostenlos)
+Die Seite läuft unter **https://loredosautomobile.de** bei **Hostinger**.
+Hostinger holt die Dateien automatisch aus diesem GitHub-Repository
+(`Loredo-alb/loredosautomobile1`, Zweig `main`). Jede Änderung, die hier
+gespeichert wird (neues Fahrzeug, Fotos, Preise), ist kurz danach online.
 
-Die Seite läuft unter **https://loredosautomobile.de** (über GitHub Pages; die
-Datei `CNAME` legt die Domain fest, die DNS-Einträge stehen bei Hostinger).
-Jede Änderung, die auf GitHub im Zweig `main` gespeichert wird (neues
-Fahrzeug, Fotos, Preise), ist nach 1 bis 2 Minuten automatisch online.
-
-- Das Kontaktformular verschickt hier keine E-Mails selbst (GitHub kann kein
-  PHP). Kunden schicken die vorbereitete Nachricht per WhatsApp oder E-Mail ab.
-- Die Datenschutzerklärung ist auf GitHub Pages eingestellt.
-
-Einmalig einzurichten (auf github.com im Browser, nicht in der App):
-1. **Settings** → **Pages** → bei **Source** „Deploy from a branch“, Branch
-   **main**, Ordner **/ (root)** → **Save**.
-2. Bei Hostinger unter **Domains → loredosautomobile.de → DNS-Einträge**:
-   - alte A-Einträge für **@** löschen, dann 4 neue A-Einträge mit Name **@**:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - alten Eintrag für **www** löschen, dann CNAME mit Name **www** auf
-     `loredo-alb.github.io`
-   - MX-Einträge (E-Mail) nicht anfassen.
-3. Wenn bei GitHub unter **Pages** „DNS check successful“ steht:
-   **Enforce HTTPS** einschalten.
-
-### Später: eigene Domain bei Hostinger (mit E-Mail-Formular)
-
-1. Eine **eigene Domain** registrieren, z. B. `loredos-automobile.de`, und ein
-   Webhosting-Paket **mit PHP** wählen (für das Kontaktformular).
-2. **Alle Dateien und Unterordner** in das Hauptverzeichnis der Domain
-   hochladen, bei Hostinger in `public_html` über den Dateimanager.
-   `README.md` und `ANLEITUNG.md` müssen nicht mit hochgeladen werden.
-3. **SSL/HTTPS aktivieren** (bei Hostinger kostenlos, ein Klick).
-4. **Datenschutzerklärung anpassen:** Abschnitt 3 (Hosting) und 4
-   (Kontaktformular) auf Hostinger und den E-Mail-Versand umstellen.
-5. **Kontaktformular testen:** Eine Testanfrage senden und prüfen, ob die E-Mail
-   ankommt (auch im Spam-Ordner nachsehen). Falls nicht: bei Hostinger ein
-   Postfach der eigenen Domain anlegen (z. B. `anfrage@loredos-automobile.de`)
-   und in `kontakt.php` bei `ABSENDER` eintragen.
-6. Bei **Google Unternehmensprofil** (Google Maps) die neue Webseite eintragen.
+- **Nichts an den DNS-Einträgen der Domain ändern**, sie zeigen richtig auf Hostinger.
+- Das Kontaktformular verschickt Anfragen per E-Mail (`kontakt.php`). Einmal
+  testen, ob die E-Mail ankommt (auch im Spam-Ordner nachsehen). Falls nicht:
+  bei Hostinger ein Postfach der Domain anlegen (z. B.
+  `anfrage@loredosautomobile.de`) und in `kontakt.php` bei `ABSENDER` eintragen.
+- `.htaccess` sorgt dafür, dass Handys Seiten und Fahrzeugdaten nicht eine Woche
+  lang zwischenspeichern. Ändern sich `style.css`, `app.js` oder `fahrzeuge.js`
+  grundlegend, die Versionsnummer `?v=...` in den vier `.html`-Dateien erhöhen.
+- Bei **Google Unternehmensprofil** (Google Maps) die Webseite eintragen.
 
 ---
 
@@ -172,7 +148,7 @@ Einmalig einzurichten (auf github.com im Browser, nicht in der App):
 
 - **Impressum:** Bei Eintragung ins Handelsregister (z. B. als „e. K.“)
   müssen Registergericht und Registernummer ergänzt werden.
-- **Datenschutz:** Die Erklärung geht von GitHub Pages als Webhoster und einem
+- **Datenschutz:** Die Erklärung geht von Hostinger als Webhoster und einem
   Outlook-Postfach aus. Bei einem anderen Anbieter den Abschnitt „Hosting“
   bzw. „E-Mail“ anpassen. Wenn Sie später Google Maps einbetten, Statistik-Tools
   oder Social-Media-Plugins einbauen, muss die Erklärung erweitert werden (und

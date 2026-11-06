@@ -34,18 +34,23 @@ start_teil = start_teil.replace('<section class="start" aria-labelledby="titel">
 impressum = innen(lies("impressum.html"), '<main id="inhalt" class="wrap recht">', '</main>')
 datenschutz = innen(lies("datenschutz.html"), '<main id="inhalt" class="wrap recht">', '</main>')
 # Diese Fassung liegt auf claude.ai, nicht auf GitHub Pages: Abschnitt Hosting anpassen
-_a = datenschutz.index("  <h2>3. Hosting über GitHub Pages</h2>"); _b = datenschutz.index("  <h2>4. Kontaktformular</h2>")
+_a = datenschutz.index("  <h2>3. "); _b = datenschutz.index("  <h2>4. Kontaktformular</h2>")
+_c = datenschutz.index("  <h2>5. ")
 datenschutz = datenschutz[:_a] + '''  <h2>3. Bereitstellung der Seite über claude.ai</h2>
   <p>Diese Webseite wird über die Plattform claude.ai bereitgestellt, einen Dienst von Anthropic (für Nutzer in der EU: Anthropic Ireland, Limited, Dublin, Irland). Beim Aufruf der Seite verarbeitet der Anbieter technisch notwendige Verbindungsdaten, zum Beispiel Ihre IP-Adresse, Datum und Uhrzeit des Abrufs und den Browsertyp. Dabei können Daten auch in die USA übertragen werden.</p>
   <p>Das ist erforderlich, um die Seite auszuliefern und ihre Sicherheit zu gewährleisten. Rechtsgrundlage ist unser berechtigtes Interesse an einem funktionsfähigen Webauftritt (Art. 6 Abs. 1 lit. f DSGVO). Welche Daten der Anbieter dabei erhebt, ob er Cookies setzt und wie lange er Daten speichert, regelt seine <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
   <p>Die Verbindung zu dieser Webseite ist verschlüsselt (HTTPS), damit Ihre Eingaben nicht von Dritten mitgelesen werden können.</p>
 
-''' + datenschutz[_b:]
-for _x, _y in [("GitHub für das Hosting", "Anthropic für die Bereitstellung der Seite"),
+  <h2>4. Kontaktformular</h2>
+  <p>Das Kontaktformular verschickt selbst keine Daten. Ihre Eingaben (Name, Telefonnummer und/oder E-Mail-Adresse, Ihr Anliegen, das gewählte Fahrzeug und Ihre Nachricht) bleiben in Ihrem Browser und werden zu einer Nachricht zusammengestellt. Diese senden Sie anschließend selbst per WhatsApp oder über Ihr E-Mail-Programm an uns. Erst dann erhalten wir Ihre Angaben; es gilt Abschnitt 5.</p>
+  <p>Wir nutzen die Angaben ausschließlich, um Ihre Anfrage zu beantworten, etwa um einen Besichtigungstermin zu vereinbaren oder ein Angebot zu machen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertrags) und, bei allgemeinen Anfragen, unser berechtigtes Interesse an der Beantwortung (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+''' + datenschutz[_c:]
+for _x, _y in [("Hostinger für das Hosting", "Anthropic für die Bereitstellung der Seite"),
                ("Diese Webseite setzt keine Cookies und verwendet keine", "Diese Webseite selbst setzt keine Cookies und verwendet keine")]:
     assert datenschutz.count(_x) == 1, _x
     datenschutz = datenschutz.replace(_x, _y)
-assert "GitHub" not in datenschutz
+assert "GitHub" not in datenschutz and "Hostinger" not in datenschutz
 
 inhalt = f'''<title>Loredo’s Automobile</title>
 <style>

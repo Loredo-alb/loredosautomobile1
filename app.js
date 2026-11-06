@@ -629,8 +629,11 @@
     var spur = d.querySelector(".betrachter-spur"), zahl = d.querySelector(".galerie-zahl");
     function index() { return Math.round(spur.scrollLeft / Math.max(1, spur.clientWidth)); }
     function gehe(i) { spur.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * spur.clientWidth, behavior: "smooth" }); }
+    var zuletzt = start;
     function aktualisieren() {
+      if (!d.open || !spur.clientWidth) return; // geschlossen: Position nicht überschreiben
       var i = index();
+      zuletzt = i;
       if (zahl) zahl.textContent = (i + 1) + " / " + n;
       var l = d.querySelector(".galerie-pfeil.l"), r = d.querySelector(".galerie-pfeil.r");
       if (l) l.disabled = i === 0;
@@ -646,7 +649,7 @@
       if (e.key === "ArrowLeft") { e.preventDefault(); gehe(index() - 1); }
     });
     d.addEventListener("close", function () {
-      var i = index();
+      var i = zuletzt;
       document.documentElement.style.overflow = "";
       d.remove();
       if (zurueck) zurueck(i);

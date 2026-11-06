@@ -129,7 +129,8 @@ Ab 4 Fahrzeugen erscheinen Suche und Filter wieder von selbst.
 
 ### Aktuell: GitHub Pages (kostenlos)
 
-Die Seite läuft unter **https://loredo-alb.github.io/loredosautomobile1/**.
+Die Seite läuft unter **https://loredosautomobile.de** (über GitHub Pages; die
+Datei `CNAME` legt die Domain fest, die DNS-Einträge stehen bei Hostinger).
 Jede Änderung, die auf GitHub im Zweig `main` gespeichert wird (neues
 Fahrzeug, Fotos, Preise), ist nach 1 bis 2 Minuten automatisch online.
 
@@ -138,8 +139,16 @@ Fahrzeug, Fotos, Preise), ist nach 1 bis 2 Minuten automatisch online.
 - Die Datenschutzerklärung ist auf GitHub Pages eingestellt.
 
 Einmalig einzurichten (auf github.com im Browser, nicht in der App):
-**Settings** → **Pages** → bei **Source** „Deploy from a branch“, Branch
-**main**, Ordner **/ (root)** → **Save**.
+1. **Settings** → **Pages** → bei **Source** „Deploy from a branch“, Branch
+   **main**, Ordner **/ (root)** → **Save**.
+2. Bei Hostinger unter **Domains → loredosautomobile.de → DNS-Einträge**:
+   - alte A-Einträge für **@** löschen, dann 4 neue A-Einträge mit Name **@**:
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - alten Eintrag für **www** löschen, dann CNAME mit Name **www** auf
+     `loredo-alb.github.io`
+   - MX-Einträge (E-Mail) nicht anfassen.
+3. Wenn bei GitHub unter **Pages** „DNS check successful“ steht:
+   **Enforce HTTPS** einschalten.
 
 ### Später: eigene Domain bei Hostinger (mit E-Mail-Formular)
 

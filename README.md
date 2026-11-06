@@ -12,7 +12,7 @@ die vorbereitete Anfrage per WhatsApp oder E-Mail.
 
 ## Online
 
-**https://loredo-alb.github.io/loredosautomobile1/** (GitHub Pages).
+**https://loredosautomobile.de** (GitHub Pages, Domain bei Hostinger).
 Änderungen im Zweig `main` sind nach 1 bis 2 Minuten online.
 Einrichtung und Umzug auf eine eigene Domain: siehe [ANLEITUNG.md](ANLEITUNG.md).
 

@@ -13,3 +13,7 @@
   ExpiresByType application/x-javascript "access plus 0 seconds"
   ExpiresByType text/javascript "access plus 0 seconds"
 </IfModule>
+
+# Interne Dateien (Anleitung, Werkzeuge, claude.ai-Fassung) nicht über die Domain ausliefern;
+# sie bleiben im GitHub-Repository.
+RedirectMatch 404 ^/(README\.md|ANLEITUNG\.md|claude-vorschau\.html|\.gitignore|\.nojekyll|werkzeuge(/.*)?)$

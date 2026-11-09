@@ -53,7 +53,7 @@ Karosserie: Limousine
 Farbe: Schwarz
 Innenausstattung: Stoff
 Türen: 5
-Vorbesitzer: 2
+Vorbesitzer: 1
 HU bis: 04/2028
 Zustand: Unbeschädigtes Fahrzeug
 Bereifung: 8-fach bereift

@@ -5,14 +5,13 @@
   Schickt Anfragen aus dem Formular per E-Mail an EMPFAENGER.
   Läuft auf jedem Webspace mit PHP (z. B. Hostinger Webhosting).
 
-  Kommen keine E-Mails an? Dann bei ABSENDER ein echtes Postfach
-  Ihrer Domain eintragen, z. B. 'anfrage@ihre-domain.de'
-  (bei Hostinger unter E-Mails anlegen).
+  Wichtig: Das Postfach bei ABSENDER muss bei Hostinger als E-Mail-Konto
+  angelegt sein (hPanel → E-Mails). Sonst nimmt Outlook die Mails nicht an.
 */
 declare(strict_types=1);
 
 const EMPFAENGER = 'loredosautomobile@outlook.de';
-const ABSENDER = '';
+const ABSENDER = 'anfrage@loredosautomobile.de'; // muss bei Hostinger als E-Mail-Konto existieren
 
 date_default_timezone_set('Europe/Berlin');
 $ajax = (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'fetch');

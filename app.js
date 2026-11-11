@@ -742,7 +742,7 @@
       fetch("kontakt.php", { method: "POST", body: fd, headers: { "X-Requested-With": "fetch", "Accept": "application/json" } })
         .then(function (r) { return r.json().catch(function () { return { ok: false }; }).then(function (j) { if (!r.ok || !j.ok) throw new Error("nicht gesendet"); }); })
         .then(function () {
-          zeige("ok", "<strong>Vielen Dank, " + esc(d.name) + "!</strong> Ihre Anfrage ist bei uns angekommen. Wir melden uns so schnell wie möglich.");
+          zeige("ok", "<strong>Vielen Dank, " + esc(d.name) + "!</strong> Ihre Anfrage wurde gesendet. Wir melden uns so schnell wie möglich. Eilt es? Dann rufen Sie an: <strong>" + FIRMA.telefonAnzeige + "</strong>");
           form.reset();
           if (auswahl && seite === "fahrzeug") auswahl.value = d.fahrzeug;
           fertig();

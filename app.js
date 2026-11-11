@@ -684,6 +684,29 @@
       meldung.hidden = false;
     }
 
+    // Häufige Tippfehler in E-Mail-Adressen still korrigieren (Leerzeichen, Komma statt Punkt, Punkt am Ende)
+    function emailBereinigen(w) {
+      w = String(w || "").replace(/\s+/g, "").replace(/,/g, ".").replace(/\.{2,}/g, ".").replace(/\.+$/, "");
+      var at = w.lastIndexOf("@");
+      return at > 0 ? w.slice(0, at + 1) + w.slice(at + 1).toLowerCase() : w;
+    }
+
+    // Fehler direkt am Feld anzeigen; verschwindet, sobald man das Feld ändert
+    function feldFehler(name, text) {
+      var feld = f(name);
+      feld.classList.add("falsch");
+      feld.setAttribute("aria-invalid", "true");
+      var hinweis = feld.parentNode.querySelector(".feld-hinweis");
+      if (!hinweis) { hinweis = document.createElement("small"); hinweis.className = "feld-hinweis"; feld.parentNode.appendChild(hinweis); }
+      hinweis.textContent = text;
+    }
+    function fehlerWeg() {
+      form.querySelectorAll(".falsch").forEach(function (el) { el.classList.remove("falsch"); el.removeAttribute("aria-invalid"); });
+      form.querySelectorAll(".feld-hinweis").forEach(function (el) { el.remove(); });
+      if (meldung.classList.contains("fehler")) meldung.hidden = true;
+    }
+    ["name", "telefon", "email"].forEach(function (n) { f(n).addEventListener("input", fehlerWeg); });
+
     // Rückmeldung nach Versand ohne JavaScript (kontakt.php leitet zurück)
     var p = new URLSearchParams(EINZEL ? "" : location.search);
     if (p.get("anfrage") === "ok") zeige("ok", "<strong>Vielen Dank!</strong> Ihre Anfrage ist bei uns angekommen. Wir melden uns so schnell wie möglich.");
@@ -711,12 +734,18 @@
         fahrzeug: auswahl ? auswahl.value : "",
         name: f("name").value.trim(),
         telefon: f("telefon").value.trim(),
-        email: f("email").value.trim(),
+        email: emailBereinigen(f("email").value),
         nachricht: f("nachricht").value.trim()
       };
-      if (!d.name) { zeige("fehler", "Bitte geben Sie Ihren Namen an."); f("name").focus(); return; }
-      if (!d.telefon && !d.email) { zeige("fehler", "Bitte geben Sie Telefon oder E-Mail an, damit wir Ihnen antworten können."); f("telefon").focus(); return; }
-      if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { zeige("fehler", "Bitte prüfen Sie die E-Mail-Adresse."); f("email").focus(); return; }
+      fehlerWeg();
+      f("email").value = d.email;
+      if (!d.name) { feldFehler("name", "Bitte Ihren Namen eingeben."); zeige("fehler", "Bitte geben Sie Ihren Namen an."); f("name").focus(); return; }
+      if (!d.telefon && !d.email) { feldFehler("telefon", "Telefon oder E-Mail angeben, damit wir antworten können."); zeige("fehler", "Bitte geben Sie Telefon oder E-Mail an, damit wir Ihnen antworten können."); f("telefon").focus(); return; }
+      if (d.email && !/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/.test(d.email)) {
+        feldFehler("email", "Bitte prüfen, z. B. name@outlook.de" + (d.telefon ? " – oder das Feld leer lassen." : "."));
+        zeige("fehler", "Die E-Mail-Adresse ist unvollständig. Bitte korrigieren und erneut senden.");
+        f("email").focus(); return;
+      }
 
       var fd = new FormData(form);
       fd.set("fahrzeug", d.fahrzeug);

@@ -66,6 +66,8 @@ $fahrzeug  = feld('fahrzeug', 200);
 $name      = feld('name', 100);
 $telefon   = feld('telefon', 50);
 $email     = feld('email', 150);
+// Häufige Tippfehler wie im Formular bereinigen: Leerzeichen, Komma statt Punkt, Punkt am Ende
+$email     = rtrim((string) preg_replace(['/\s+/', '/,/', '/\.{2,}/'], ['', '.', '.'], $email), '.');
 $nachricht = feld('nachricht', 4000, false);
 $seite     = feld('seite', 300);
 

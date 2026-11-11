@@ -222,6 +222,8 @@ a.kontakt-weg:hover { border-color: var(--ink); }
 .formular h3 { font-size: 1.25rem; }
 .formular textarea.eingabe { min-height: 120px; resize: vertical; }
 .pflicht { color: var(--accent); }
+.eingabe.falsch { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(200, 16, 46, .14); }
+.feld-hinweis { color: var(--accent); font-size: .85rem; font-weight: 600; }
 .formular .klein { color: var(--mute); font-size: .85rem; }
 .formular .klein a { color: var(--ink-2); }
 .honig { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }

@@ -5,13 +5,15 @@
   Schickt Anfragen aus dem Formular per E-Mail an EMPFAENGER.
   Läuft auf jedem Webspace mit PHP (z. B. Hostinger Webhosting).
 
-  Wichtig: Das Postfach bei ABSENDER muss bei Hostinger als E-Mail-Konto
-  angelegt sein (hPanel → E-Mails). Sonst nimmt Outlook die Mails nicht an.
+  Die Mails kommen mit dem Absender webseite@loredosautomobile.de. Landen sie
+  im Junk-Ordner: in Outlook als "Kein Junk" markieren bzw. Absender als
+  sicher einstufen. Für noch zuverlässigere Zustellung bei Hostinger ein
+  E-Mail-Konto anlegen (z. B. anfrage@loredosautomobile.de) und hier eintragen.
 */
 declare(strict_types=1);
 
 const EMPFAENGER = 'loredosautomobile@outlook.de';
-const ABSENDER = 'anfrage@loredosautomobile.de'; // muss bei Hostinger als E-Mail-Konto existieren
+const ABSENDER = ''; // leer = webseite@loredosautomobile.de (so getestet, kommt bei Outlook an)
 
 date_default_timezone_set('Europe/Berlin');
 $ajax = (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'fetch');
